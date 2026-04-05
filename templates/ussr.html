@@ -1,0 +1,33 @@
+{% extends 'index.html' %}
+
+{% block title %}
+Выдающиеся космонавты СССР
+{% endblock %}
+
+{% block body %}
+<div class="row">
+    <div class="col-12">
+        <p>СССР — одна из первых стран покорительниц космоса. 
+        В ходе космической гонки с США, советские инженеры, ученые и конструкторы продемонстрировали высокий профессионализм.
+        Некоторые из разработок той эпохи используются в первозданном виде и по сей день. Однако, не стоит забывать про тех, 
+        кто летел в космических кораблях навстречу к неизведанному.</p>
+        
+        <h3 class="mt-4 mb-3">Знаменитые космонавты СССР</h3>
+        
+        <div class="row">
+            {% for astronaut in astronauts %}
+            <div class="col-md-4 mb-4">
+                <div class="card h-100">
+                    <img src="{{ url_for('static', filename=astronaut.image) }}" 
+                         class="card-img-top" alt="{{ astronaut.name }}">
+                    <div class="card-body">
+                        <h5 class="card-title">{{ astronaut.name }}</h5>
+                        <p class="card-text">{{ astronaut.description }}</p>
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+</div>
+{% endblock %}
